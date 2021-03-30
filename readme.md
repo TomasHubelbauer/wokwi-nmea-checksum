@@ -14,4 +14,5 @@ the two HEX files appear there.
 
 The program output is empty with either of the files.
 
-https://stackblitz.com/edit/avr8js-serial should help.
+https://stackblitz.com/edit/avr8js-serial and
+https://blog.wokwi.com/avr8js-simulate-arduino-in-javascript should help.
