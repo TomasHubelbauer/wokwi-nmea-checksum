@@ -3,16 +3,18 @@
 Testing out the Wokwi Arduino simulator by running my NMEA checksum sketch on
 it.
 
-`nmea-checksum.ino` is the Arduino source code. The two HEX files were obtained
-by going to the Arduino IDE, pasting the sketch code in and pressing Sketch >
-Export Compiled Binary and then Sketch > Show Sketch Folder. After the compile,
-the two HEX files appear there.
-
 ## To-Do
 
-### Figure out why the USART is not being called at all
+### Use this in my repository `arduino-nmean-checksum` instead of SimAVR
 
-The program output is empty with either of the files.
+### Use a `git diff` in the GitHub Actions workflow to assert expected match
 
-https://stackblitz.com/edit/avr8js-serial and
-https://blog.wokwi.com/avr8js-simulate-arduino-in-javascript should help.
+`nmea-checksum.uart` is the generated serial and `git diff` should give a zero
+exit code of it and a control file match and error if they don't, which will be
+ideal for the CI log output.
+
+### Try to use Arduino Builder to compile the sketch to HEX in the CI
+
+It would be great to have a fallback in case `https://hexi.wokwi.com/build` is
+down or ceases to exist, Arduino Builder GitHub Actions should be able to fill
+this current gap.
