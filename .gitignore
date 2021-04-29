@@ -1,2 +1,5 @@
+nmea-checksum.hex
+nmea-checksum.uart
+
 # Node
 node_modules
