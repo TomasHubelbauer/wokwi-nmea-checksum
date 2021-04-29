@@ -1,8 +1,18 @@
 import { avrInstruction, CPU, AVRUSART, usart0Config } from "avr8js";
+import fetch from 'node-fetch';
 import fs from 'fs';
 
 void async function () {
-  const hex = await fs.promises.readFile('nmea_checksum.ino.micro.hex', 'utf-8');
+  const sketch = await fs.promises.readFile('nmea-checksum.ino', 'utf-8');
+  const req = await fetch('https://hexi.wokwi.com/build', {
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({ sketch }),
+    method: 'POST',
+  });
+  const { hex, stdout, stderr } = await req.json();
+  console.log('compiler output', stderr || stdout);
   const program = new Uint16Array(0x8000);
   loadHex(hex, new Uint8Array(program.buffer));
   const cpu = new CPU(program);

@@ -1,6 +1,7 @@
 {
   "type": "module",
   "dependencies": {
-    "avr8js": "^0.15.0"
+    "avr8js": "^0.15.0",
+    "node-fetch": "^2.6.1"
   }
 }
